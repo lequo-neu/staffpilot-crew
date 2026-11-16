@@ -1,0 +1,48 @@
+[project]
+name = "staffpilot-crew"
+version = "0.1.0"
+description = "Multi agent copilot for support staffing decisions (IE5374 Applied Generative AI, final project)"
+readme = "README.md"
+requires-python = ">=3.11,<3.14"
+license = { text = "MIT" }
+authors = [{ name = "Seven Team-5374" }]
+dependencies = [
+    # Optimizer, simulator, data loader and model backends from our Module 7 hackathon,
+    # pinned to the submitted commit so the graded repository is never changed.
+    "staffpilot @ git+https://github.com/lequo-neu/staffpilot@194a08061587af2538e34ff6b6a50c35821f457f",
+    "langgraph==1.2.19",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "ruff==0.17.4"]
+
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+target-version = "py311"
+line-length = 110
+
+[tool.ruff.lint]
+future-annotations = true
+extend-select = ["E", "F", "B", "S", "RUF", "N", "W", "I", "T", "PERF", "PIE", "TID", "RET", "UP"]
+ignore = ["E501", "S101"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["S", "T"]
+
+[tool.ruff.lint.flake8-tidy-imports]
+ban-relative-imports = "all"
+
+[tool.ruff.lint.isort]
+force-sort-within-sections = true
+combine-as-imports = true
+lines-after-imports = 2
+known-first-party = ["staffpilot_crew"]

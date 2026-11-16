@@ -1,0 +1,33 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.pytest_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+
+# Environments and secrets
+.venv/
+venv/
+.env
+
+# Data from the teaching team is not redistributed; see data/raw/README.md
+data/raw/*
+!data/raw/README.md
+
+# Generated at run time
+outputs/
+logs/
+runs/
+.cache/
+eval/cache/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Demo videos are shared by link, not committed (GitHub limit 100 MB)
+*.mov
+*.mp4
