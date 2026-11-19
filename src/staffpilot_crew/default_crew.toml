@@ -1,0 +1,98 @@
+# StaffPilot Crew settings. Copy any section to config/crew.toml to override it;
+# the file named in STAFFPILOT_CREW_CONFIG wins over both.
+
+[graph]
+# Retries the Decision critic may ask for in each loop, counted separately.
+optimizer_retries = 2
+writer_retries = 2
+# Hard stop on graph steps for one run, on top of the retry counters.
+recursion_limit = 60
+# A monthly update whose sign ups differ from the forecast by more than this share
+# starts a review by itself.
+monitor_gap = 0.10
+
+[router]
+# Accuracy a model must reach on a step before the router trusts it, by request difficulty.
+bar = { simple = 0.80, moderate = 0.88, hard = 0.95 }
+# A request counts as hard from this many countries, or when its limits pull against each other.
+hard_countries = 3
+
+# Each model the router may use. `spec` is the LangChain "provider:model" string.
+# `prices` are US dollars per million tokens (input, output), used to turn measured token
+# counts into a cost. They are the ones the hackathon used (config/eval_online.toml of
+# StaffPilot, looked up on 3 November 2026); a model without a known price has none, and its
+# cost is then shown as unknown rather than guessed. `roles` are the steps the team assigned to the model in the proposal.
+#
+# `prior` is a starting guess of the share of steps the model gets right, by step type. It is
+# NOT a measurement: the router marks every choice based on it as "prior", and
+# `staffpilot-crew eval` replaces it with measured values in eval/results/routing_table.csv.
+# `measured` holds values that were measured, with their source.
+[[router.models]]
+name = "claude"
+label = "Claude Sonnet 5.5"
+provider = "anthropic"
+spec = "anthropic:claude-sonnet-5-5"
+prices = [2.00, 10.00]
+roles = ["reason", "decide"]
+prior = { reason = 0.97, decide = 0.97, write = 0.95 }
+measured = { classify = 1.0 }
+measured_source = "StaffPilot hackathon holdout set, 32 questions, intent accuracy"
+
+[[router.models]]
+name = "gpt_nano"
+label = "GPT 5 nano"
+provider = "openai"
+spec = "openai:gpt-5-nano"
+prices = [0.05, 0.40]
+roles = ["classify"]
+prior = { reason = 0.85, decide = 0.82, write = 0.82 }
+measured = { classify = 0.84375 }
+measured_source = "StaffPilot hackathon holdout set, 32 questions, intent accuracy"
+
+[[router.models]]
+name = "gemini_flash"
+label = "Gemini 3.5 Flash"
+provider = "google"
+# The Google model the hackathon pinned for its online runs (its key cannot call Pro).
+# No price was looked up for it, so its cost is reported as unknown.
+spec = "google_genai:gemini-3.5-flash"
+roles = ["write"]
+prior = { classify = 0.88, reason = 0.90, decide = 0.88, write = 0.95 }
+measured = {}
+measured_source = ""
+
+[[router.models]]
+name = "gemma_local"
+label = "Gemma 4 E4B (local)"
+provider = "local"
+spec = "local:google/gemma-4-e4b"
+prices = [0.0, 0.0]
+roles = ["private"]
+prior = { reason = 0.80, decide = 0.75, write = 0.80 }
+measured = { classify = 0.875 }
+measured_source = "StaffPilot hackathon holdout set, 32 questions, intent accuracy"
+
+[automation]
+# Uplift an advertiser handled by an AI assistant earns, as a share of what a human agent
+# earns. The brief gives no data on this, so results are reported over this range.
+uplift_share_low = 0.0
+uplift_share_high = 0.5
+
+[workflow]
+# A proposal goes to Finance first when its staffing cost moves more than this share or this
+# many dollars against the plan the year started with, when it changes hires in any country by
+# more than this many people, or when the manager set a budget for it.
+finance_cost_share = 0.05
+finance_cost_usd = 100000
+finance_hires_per_country = 5
+# A proposal waiting longer than this, or older than its country's latest data, is stale and
+# cannot be approved until its numbers are refreshed.
+stale_days = 7
+# Days before a hiring deadline when it counts as due soon.
+due_soon_days = 7
+
+[paths]
+# Users and the decision log share one SQLite file; LangGraph keeps its checkpoints in its own.
+app_db = "outputs/crew_app.sqlite"
+checkpoints = "outputs/crew_checkpoints.sqlite"
+eval_results = "eval/results"

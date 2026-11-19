@@ -1,0 +1,2 @@
+setup,kind,questions,task_accuracy,grounded_rate,writer_first_try,cost_per_request_usd,unpriced_calls,seconds_per_request,model_calls,cost_note,on_frontier
+Offline backend (no model),router,14,1.0,1.0,1.0,0.0,0,0.3794285714285714,0,no model calls,True

@@ -1,0 +1,15 @@
+setup,kind,question,correct,checks,grounded,writer_first_try,reading_correct,seconds,cost_usd,unpriced_calls,model_calls,models
+Offline backend (no model),router,s01,True,"{""asks_back"": true, ""countries"": true, ""audience"": true, ""limits"": true, ""chosen"": true, ""infeasible"": true}",True,True,True,0.394,0,0,0,offline
+Offline backend (no model),router,s02,True,"{""asks_back"": true, ""countries"": true, ""audience"": true, ""limits"": true, ""chosen"": true}",True,True,True,0.398,0,0,0,offline
+Offline backend (no model),router,s03,True,"{""asks_back"": true, ""countries"": true, ""audience"": true, ""limits"": true, ""chosen"": true}",True,True,True,0.42,0,0,0,offline
+Offline backend (no model),router,s04,True,"{""asks_back"": true, ""countries"": true, ""audience"": true, ""limits"": true, ""chosen"": true, ""infeasible"": true}",True,True,True,0.459,0,0,0,offline
+Offline backend (no model),router,s05,True,"{""asks_back"": true, ""countries"": true, ""audience"": true, ""limits"": true, ""chosen"": true, ""infeasible"": true}",True,True,True,0.207,0,0,0,offline
+Offline backend (no model),router,s06,True,"{""asks_back"": true, ""countries"": true, ""audience"": true, ""limits"": true, ""chosen"": true}",True,True,True,0.509,0,0,0,offline
+Offline backend (no model),router,s07,True,"{""asks_back"": true, ""countries"": true, ""audience"": true, ""limits"": true, ""chosen"": true}",True,True,True,0.291,0,0,0,offline
+Offline backend (no model),router,s08,True,"{""asks_back"": true, ""countries"": true, ""audience"": true, ""limits"": true, ""chosen"": true}",True,True,True,0.239,0,0,0,offline
+Offline backend (no model),router,s09,True,"{""asks_back"": true}",True,True,True,0.001,0,0,0,offline
+Offline backend (no model),router,s10,True,"{""asks_back"": true}",True,True,True,0.001,0,0,0,offline
+Offline backend (no model),router,s11,True,"{""asks_back"": true, ""countries"": true, ""audience"": true, ""limits"": true, ""chosen"": true, ""infeasible"": true}",True,True,True,1.729,0,0,0,offline
+Offline backend (no model),router,s12,True,"{""asks_back"": true, ""countries"": true, ""audience"": true, ""limits"": true, ""chosen"": true}",True,True,True,0.129,0,0,0,offline
+Offline backend (no model),router,s13,True,"{""asks_back"": true, ""countries"": true, ""audience"": true, ""chosen"": true}",True,True,True,0.087,0,0,0,offline
+Offline backend (no model),router,s14,True,"{""asks_back"": true, ""countries"": true, ""audience"": true, ""limits"": true, ""chosen"": true}",True,True,True,0.448,0,0,0,offline

@@ -1,0 +1,32 @@
+{
+  "about": "Multi step requests with labels. 'sample' questions use the synthetic dataset (Alpha, Beta, Gamma); 'course' questions use the course dataset. A label left out is not scored. 'chosen' is the option the Decision critic should pick; 'infeasible' says whether the manager's limits cannot all be met.",
+  "questions": [
+    {"id": "s01", "set": "sample", "request": "What is the plan for Alpha?", "countries": ["Alpha"], "audience": "manager", "limits": {}, "asks_back": false, "chosen": "recommended", "infeasible": false},
+    {"id": "s02", "set": "sample", "request": "Compare Alpha and Beta for next year", "countries": ["Alpha", "Beta"], "audience": "manager", "limits": {}, "asks_back": false, "chosen": "recommended"},
+    {"id": "s03", "set": "sample", "request": "Compare a growth push in Alpha, Beta and Gamma where sign ups rise 20%", "countries": ["Alpha", "Beta", "Gamma"], "audience": "manager", "limits": {}, "asks_back": false, "chosen": "recommended"},
+    {"id": "s04", "set": "sample", "request": "Beta: serve at least 98% with no more than 1 hire per month", "countries": ["Beta"], "audience": "manager", "limits": {"service_goal": 0.98, "max_hires_per_month": 1}, "asks_back": false, "chosen": "relaxed", "infeasible": true},
+    {"id": "s05", "set": "sample", "request": "Keep hiring in Gamma to at most 20 people a month and serve at least 95%", "countries": ["Gamma"], "audience": "manager", "limits": {"service_goal": 0.95, "max_hires_per_month": 20}, "asks_back": false, "chosen": "within_limits", "infeasible": false},
+    {"id": "s06", "set": "sample", "request": "Write a memo for the Alpha country manager", "countries": ["Alpha"], "audience": "country_manager", "limits": {}, "asks_back": false, "chosen": "recommended"},
+    {"id": "s07", "set": "sample", "request": "A note for finance on the cost of Beta", "countries": ["Beta"], "audience": "finance", "limits": {}, "asks_back": false, "chosen": "recommended"},
+    {"id": "s08", "set": "sample", "request": "What if an AI assistant onboards 30% of advertisers in Alpha?", "countries": ["Alpha"], "audience": "manager", "limits": {"automation_share": 0.3}, "asks_back": false, "chosen": "recommended"},
+    {"id": "s09", "set": "sample", "request": "What if sign ups rise 20%?", "countries": [], "asks_back": true},
+    {"id": "s10", "set": "sample", "request": "What should we do?", "countries": [], "asks_back": true},
+    {"id": "s11", "set": "sample", "request": "Beta needs to stay within a budget of $300k while serving at least 98%", "countries": ["Beta"], "audience": "manager", "limits": {"budget_usd": 300000, "service_goal": 0.98}, "asks_back": false, "chosen": "relaxed", "infeasible": true},
+    {"id": "s12", "set": "sample", "request": "Sign ups in Gamma drop 30% in Q3. What does it cost us?", "countries": ["Gamma"], "audience": "manager", "limits": {}, "asks_back": false, "chosen": "recommended"},
+    {"id": "s13", "set": "sample", "request": "Monthly update for Beta", "monthly": {"country": "Beta", "as_of": 3, "scale": 1.3}, "countries": ["Beta"], "audience": "manager", "asks_back": false, "chosen": "update"},
+    {"id": "s14", "set": "sample", "request": "What if sign ups rise 20% in all countries?", "countries": ["Alpha", "Beta", "Gamma"], "audience": "manager", "limits": {}, "asks_back": false, "chosen": "recommended"},
+
+    {"id": "c01", "set": "course", "request": "Sign ups in the USA came in 20% above forecast in March. What should we do, and what does it cost?", "countries": ["USA"], "audience": "manager", "limits": {}, "asks_back": false},
+    {"id": "c02", "set": "course", "request": "We are thinking of launching a campaign in Brazil in Q3 with 30% more sign ups. Can our team handle it?", "countries": ["Brazil"], "audience": "manager", "limits": {}, "asks_back": false},
+    {"id": "c03", "set": "course", "request": "Compare a Q3 growth push in the USA, Brazil and the UAE. Where does it pay?", "countries": ["USA", "Brazil", "UAE"], "audience": "manager", "limits": {}, "asks_back": false},
+    {"id": "c04", "set": "course", "request": "Why does support in the UAE lose money, and what are our options?", "countries": ["UAE"], "audience": "manager", "limits": {}, "asks_back": false},
+    {"id": "c05", "set": "course", "request": "Write a short note to the Vietnam country manager that explains why they are hiring.", "countries": ["Vietnam"], "audience": "country_manager", "limits": {}, "asks_back": false},
+    {"id": "c06", "set": "course", "request": "Keep hiring in Brazil to at most 5 people a month and serve at least 98%", "countries": ["Brazil"], "audience": "manager", "limits": {"max_hires_per_month": 5, "service_goal": 0.98}, "asks_back": false},
+    {"id": "c07", "set": "course", "request": "What if an AI assistant onboards 30% of small advertisers in Brazil?", "countries": ["Brazil"], "audience": "manager", "limits": {"automation_share": 0.3}, "asks_back": false},
+    {"id": "c08", "set": "course", "request": "A note for finance on the cost of staffing Germany and France", "countries": ["Germany", "France"], "audience": "finance", "limits": {}, "asks_back": false},
+    {"id": "c09", "set": "course", "request": "Japan has a staffing budget of $2M for the year; serve at least 98%", "countries": ["Japan"], "audience": "manager", "limits": {"budget_usd": 2000000, "service_goal": 0.98}, "asks_back": false},
+    {"id": "c10", "set": "course", "request": "What if sign ups rise 20%?", "countries": [], "asks_back": true},
+    {"id": "c11", "set": "course", "request": "Monthly update for the USA", "monthly": {"country": "USA", "as_of": 4, "scale": 1.2}, "countries": ["USA"], "audience": "manager", "asks_back": false, "chosen": "update"},
+    {"id": "c12", "set": "course", "request": "Plan India and Indonesia with no more than 10 hires a month", "countries": ["India", "Indonesia"], "audience": "manager", "limits": {"max_hires_per_month": 10}, "asks_back": false}
+  ]
+}
